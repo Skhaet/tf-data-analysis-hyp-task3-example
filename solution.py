@@ -1,11 +1,15 @@
 import pandas as pd
 import numpy as np
-import random 
+
+from scipy.stats import mannwhitneyu
+from scipy import stats
 
 chat_id = 270620880 # Ваш chat ID, не меняйте название переменной
 
-def solution(...) -> bool: # Одна или две выборке на входе, заполняется исходя из условия
+def solution(x: np.array, y: np.array) -> bool: # Одна или две выборке на входе, заполняется исходя из условия
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
-    return bool(random.getrandbits(1)) # Ваш ответ, True или False
+    a = 0.06
+    p = stats.mannwhitneyu(x, y).pvalue
+    return p<a # Ваш ответ, True или False
